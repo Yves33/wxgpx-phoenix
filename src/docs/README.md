@@ -64,7 +64,9 @@ py -m pip install /path/to/downloaded/package.whl
 `py -m pip uninstall pypubsub`  
 `py -m pip install pypubsub==3.3.0`  
 
-+ The program will use PyDispatch instead of pubsub if it is installed (the frozen version uses PyDispatch)  
++ The program will use PyDispatch instead of pubsub if it is installed (the frozen version uses PyDispatch)
+
++ On XP, setting up Python 3.4 (the latest XP supported python version) and all ots dependancies may be tricky... If you want to use XP, you should use Python 2.7.13
 
 2.3 How do I Install it, I'm on windows and I do not have a working python environement?
 ---------------------------------------------------------------------------------------
