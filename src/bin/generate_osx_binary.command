@@ -12,6 +12,8 @@ pyinstaller --clean --windowed wxgpgpsport.py --icon ./images/Map.ico \
 --exclude-module tkinter \
 --exclude-module Tkinter \
 --exclude-module tk \
+--exclude-module pubsub \
+--exclude-module smokesignal \
 --workpath $TMPDIR
 cp -R images dist/wxgpgpsport.app/Contents/MacOS/
 cp -R docs dist/wxgpgpsport.app/Contents/MacOS/

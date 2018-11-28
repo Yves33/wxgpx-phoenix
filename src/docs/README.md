@@ -28,7 +28,7 @@ wxGPGPSport is distributed under the LGPL. A copy of the LGPL is bundled in the 
 
 2.1 How do I install it, The easy way.
 --------------------------------------
-Since version 20170630, wxgpx is compatible with pyinstaller. You can therefore directly download a binary release (for windows and OSX) from the project home page (http://develandco.blog.free.fr) or from github repo (https://github.com/Yves33/wxgpx/releases).  
+Since version 20170630, wxgpx is compatible with pyinstaller. You can therefore directly download a binary release (for windows and OSX) from github repo (https://github.com/Yves33/wxgpx-phoenix/releases).  
 The binary version is named wxgpgpsport-phoenix-latest-xx.zip where xx is either win32 or osx.
 On windows, just download, unzip, and doubleclick on wxgpgpsport.exe 
 On macOSX, just download, unzip and doubleclick wxgpgpsport  
@@ -41,30 +41,30 @@ If you already have a python environment installed, then you should install the 
 * numpy
 * matplotlib
 * lxml
-* pydispatcher
 * wxPython
-* configparser (installed by default in python3)
-* PyOpenGL WITH glut support (for font display). Although opengl is not mandatory, displaying traces is much faster with OpenGL
+* PyOpenGL WITH glut support (for font display). Although opengl is not mandatory, displaying traces is much faster with OpenGL  
 
-On windows platform, all required modules (see next paragraph) can be installed through pip 
+If you are using python 2.7
+* configparser
+* future
+
+On linux platform, all required packages can be installed using you package manager (synaptic for debian, yumex or dnf for fedora). On windows and OSX platform, all required modules (see next paragraph) can be installed through pip 
 
 `py -m pip install package_name`
 
 Notes: 
 
-+ pyOpenGL bindings installed through pip do not provide the glut library. You can download alternative packages from: http://www.lfd.uci.edu/~gohlke/pythonlibs/.
++ on Windows,pyOpenGL bindings installed through pip do not provide the glut library. You can download alternative packages from: http://www.lfd.uci.edu/~gohlke/pythonlibs/.
 Be sure to get the appropriate python version (cp37) and the correct architecture for your system (win32 or win_amd64. Install the package with  
 `
 py -m pip install /path/to/downloaded/package.whl
 `
-
-+ Glut is required to use OpenGL accelerated rendering, but the program can run without it ( just edit wxgpgpsport.ini and change map_usegl to False)    
-
-+ On linux platform, all required packages can be installed using you package manager (synaptic for debian, yumex or dnf for fedora)  
   
 + If you are using python 2.x on Win or OSX, wxPython 4.0.x will be installed with a pypubsub version that is incompatible with python2.x. You should run the commands:  
 `py -m pip uninstall pypubsub`  
 `py -m pip install pypubsub==3.3.0`  
+
++ The program will use PyDispatch instead of pubsub if it is installed (the frozen version uses PyDispatch)  
 
 2.3 How do I Install it, I'm on windows and I do not have a working python environement?
 ---------------------------------------------------------------------------------------
@@ -98,16 +98,16 @@ You may also enter `py - m pip install PyOpenGL PyOpenGL_accelerate`, but only i
 
 2.4 How do I install it, I'm on MacOSX (intel based) and I do not have a working python 3.7 install?
 ----------------------------------------------------------------------------------------------------
-OSX comes with preinstalled python 2,7, which is outdated and not compatible with wxgpx3. You should therefore proceed the same way as you installed python on windows. 
+OSX comes with preinstalled python 2,7, which is outdated for which it may be tricky to install requirements. You should therefore proceed the same way as you installed python on windows. 
 
 - Download and install python 3.7 (only x86_64 is available) : 
  https://www.python.org/ftp/python/3.7.0/python-3.7.0-macosx10.9.pkg
 
 - Open a terminal and type:  
+`py -m pip install --upgrade pip`  
 `pip install numpy lxml wxPython matplotlib pyopengl pydispatcher pyopengl pyopengl-accelerate`
 
-- Once all required packages have been installed, extract wxGPGPSport archive.
-NB: I'm not sure the program will work on PPC based macintosh. I would be happy to have some feedback
+- You're done. Your python environment should be about 250MB.
 
 2.5 How do I install it, I'm on linux and I don't have a working python 3.7 install?
 ------------------------------------------------------------------------------------
@@ -117,8 +117,8 @@ Once all required packages have been installed, extract wxGPGPSport archive.
 2.6 How do I run it?
 --------------------
 - On windows: doubleclick launch_WIN.bat, or on wxgpgpsport.py if you python files are already associated with python executables (right click on \*.py file, then select open with and browse to C:\Windows\py.exe).  
-- On macOSX: doubleclick launch_OSX.command, or enter pythonw ./gpgpsport.py in a terminal window.  
-- On linux  : open a command prompt and run python gpgpsport.py, or double click glaunch_linux.sh after chmod +x ./gpgpsport.sh), or associate \*.py files with correct program python. Depends on your file manager.
+- On macOSX: doubleclick launch_OSX.command, or enter pythonw gpgpsport.py in a terminal window. You may need to set executable flag for launch_OSX.command (in terminal chmod +x launch_OSX.command)
+- On linux  : open a command prompt and run python gpgpsport.py, or double click launch_linux.sh after chmod +x ./gpgpsport.sh), or associate \*.py files with correct program python. Depends on your file manager.
 
 3.BRIEF MANUAL
 ==============
@@ -136,6 +136,7 @@ At startup, the software window is divided into 3 main panels:
 3.2 Opening a file: 
 ------------------
 * Using the menu (File->Open), you'll get a file selection dialog box where you can browse to the file you want to open.
+* you can also directly drop your files on map or time graph
 * The program can read gpx files v1.0 (\*.gpx), compressed gpx files (\*.gpz, gpx.gz) and Garmin fit files (\*.fit). Be sure to select the right type of file in the file selector filter combo box.
 * If no information is found concerning speed in the file, the speed is calculated according to GPS positions and time. Some other information (such as slope, course,…) are calculated by the software and everything is stored in a table (to learn more about this table, see plugins section, table and shell).
 

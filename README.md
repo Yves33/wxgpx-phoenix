@@ -17,7 +17,7 @@ Below is a typical screenshot of the program displaying one of my windsurf sessi
 - Linux (32 and 64 bits)
 
 ## Features. ##
-wxGPGPSport is written in python 2.x (not compatible with python 3.x) using the wonderfull wxPython, numpy and matplotlib toolkits. It is fully cross platform and has been successfully tested on windows XP, windows 7 (32 and 64 bits), mac OSX mavericks (10.9) and fedora linux (and should work without any problem on any other linux distrib). The software features:
+wxGPGPSport is written in python (either 2.x and 3.x should work) using the wonderfull wxPython, numpy and matplotlib toolkits. It is fully cross platform and has been successfully tested on windows XP, windows 7 (32 and 64 bits), mac OSX mavericks (10.9) and fedora linux (and should work without any problem on any other linux distrib). The software features:
 
   - Reading *.gpx 1.0 and garmin *.fit files
   - Saving *.gpx 1.0 and numpy arrays (*.npz)
@@ -31,7 +31,7 @@ wxGPGPSport is written in python 2.x (not compatible with python 3.x) using the 
 ## How do I install It? ##
 ### Installing from source ###
 Please refer to the file Readme.md inside the docs folder of the archive. Basically, you'll need a working python environment, with the following packages:
-  - wxPython
+  - wxPython (vers > 4.0, aka phoenix, is required)
   - PyOpenGL
   - lxml
   - matplotlib
@@ -43,7 +43,6 @@ Once python and dependancies are installed, just download, extract, and double_c
 
 ### Installing binaries ###
 wxgpgpsport is now compatible with pyinstaller. Windows and macOSX binaries are available. Just download the files under the release tag, unzip and double click wxgpgpsport.exe (or wxgpgpsport on OSX).
-https://github.com/Yves33/wxgpx/releases/download/2017-07-14/wxgpgpsport-latest-osx.zip
-https://github.com/Yves33/wxgpx/releases/download/2017-07-14/wxgpgpsport-latest-win32.zip
+https://github.com/Yves33/wxgpx-phoenix/releases/
 
 

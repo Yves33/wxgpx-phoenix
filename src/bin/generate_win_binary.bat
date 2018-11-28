@@ -12,6 +12,8 @@ pyinstaller.exe -p .\modules\ -p .\plugins\ --windowed --clean ^
 --exclude-module tk ^
 --exclude-module win32com ^
 --exclude-module pywin32 ^
+--exclude-module pubsub ^
+--exclude-module smokesignal ^
 %TARGET%.py 
 xcopy /e /Y /i images dist\%TARGET%\images
 xcopy /e /Y /i docs dist\%TARGET%\docs

@@ -61,6 +61,7 @@ if __name__ == "__main__":
     class MainFrame(wx.Frame):
         def __init__(self, parent, id, title, size=(500,500)):
             wx.Frame.__init__(self, parent,id,size=(750,500),title=title,style=wx.DEFAULT_FRAME_STYLE)
+            self.Bind(wx.EVT_CLOSE, self.OnClose)
             #self.id=wx.NewId()                              # deprecated in wxPython  phonix
             self.id=wx.Window.NewControlId()                 
             self.gpx=None
@@ -133,6 +134,10 @@ if __name__ == "__main__":
             self.mapwidget.Draw(True)
             #force a resize event to adjust all widgets properly
             #self.__resize()
+
+        def OnClose(self,event):
+            #for some unknown reason, the normal way to exit a wxPython app generates segfault on windows
+            os._exit(0)
 
         def __resize(self):
             w,h=self.GetSize()

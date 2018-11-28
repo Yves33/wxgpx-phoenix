@@ -1,4 +1,4 @@
 @echo off
 
-py -3 ../wxgpgpsport.py
+py ../wxgpgpsport.py
 pause

@@ -7,13 +7,38 @@
 #   + wx.lib.pubsub
 #   + smokesignal
 
-import sys
+#import sys
 #this could be determined dynamically with try:except:
-__backend__='pydispatch'
+#__backend__='pydispatch'
 #__backend__='wxpubsub'
 #__backend__='pypubsub'
 #__backend__='smokesignal'
 
+backends=[]
+try:
+    import pydispatch
+    backends.append('pydispatch')
+except ImportError:
+    pass
+try:
+    import wx.lib.pubsub
+    backends.append('wxpubsub')
+except ImportError:
+    pass
+try:
+    import pubsub
+    backends.append('pypubsub')
+except ImportError:
+    pass
+try:
+    import smokesignal
+    backends.append('smokesignal')
+except ImportError:
+    pass
+        
+assert len(backends)>0,"Could not find suitable signal backend \nPlease install either PubSub or Pydispatcher or SmokeSignal"
+__backend__=backends[0]
+print("Using %s signal backend" % __backend__)
 
 if __backend__=='pydispatch':
     from pydispatch import dispatcher 
