@@ -37,9 +37,6 @@ Please refer to the file Readme.md inside the docs folder of the archive. Basica
   - matplotlib
   - numpy
   - python-dateutils
-### Setup a python environment ###
-If you need to setup a python environment, under the "releases tag", you should find an archive named PythonDependencies.zip, which contains all the files required to install a python-2.7 environment (windows machine), as well as an installation script ('install_requirements.bat').
-Once python and dependancies are installed, just download, extract, and double_click launch_xxx
 
 ### Installing binaries ###
 wxgpgpsport is now compatible with pyinstaller. Windows and macOSX binaries are available. Just download the files under the release tag, unzip and double click wxgpgpsport.exe (or wxgpgpsport on OSX).
